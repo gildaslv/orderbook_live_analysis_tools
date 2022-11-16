@@ -2,8 +2,6 @@ import ccxt.pro
 import asyncio
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
-import pandas as pd
 
 async def main():
     # generating random data values
@@ -24,7 +22,6 @@ async def main():
     line3,=ax.plot(x,y3,label='500')
     ax.legend(loc='upper left')
     ax2=fig.add_subplot(222)
-    ax3=fig.add_subplot(223)
     line4,=ax2.plot(x, y4)
     
     ax.set_xlabel('time')
@@ -34,7 +31,6 @@ async def main():
     exchange = ccxt.pro.binance({'enableRateLimit': True})
     while True:
         orderbook = await exchange.watch_order_book('ETHUSDT')
-        # print(orderbook['asks'][0], orderbook['bids'][0])
         bid=sum(x[1]for x in orderbook['bids'][:40])
         ask=sum(x[1]for x in orderbook['asks'][:40])
         y=np.append(y,bid/(bid+ask))
