@@ -1,10 +1,11 @@
 import ccxt.pro
 import asyncio
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import pandas as pd
 
 async def main():
-    import matplotlib.pyplot as plt
-    import numpy as np
-    
     # generating random data values
     x=np.linspace(1,100,100)
     y=np.linspace(.1,.9,100)
@@ -23,6 +24,7 @@ async def main():
     line3,=ax.plot(x,y3,label='500')
     ax.legend(loc='upper left')
     ax2=fig.add_subplot(222)
+    ax3=fig.add_subplot(223)
     line4,=ax2.plot(x, y4)
     
     ax.set_xlabel('time')
