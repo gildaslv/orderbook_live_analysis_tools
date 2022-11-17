@@ -19,6 +19,9 @@ async def main():
         am=np.c_[am,am][::-1]
         plt.clf()
         plt.imshow(am,aspect='auto')
+        size=round(orderbook['bids'][0][0])
+        size=np.where(prices==size)
+        plt.hlines([size],*plt.xlim(),colors='red')
         yt=np.arange(len(prices))[::-1]
         plt.yticks(yt,labels=prices)
         plt.colorbar()
