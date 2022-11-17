@@ -10,10 +10,10 @@ async def main():
     price=np.zeros(200)
     while True:
         orderbook = await exchange.watch_order_book('ETHUSDT')
-        price=np.append(price,orderbook['bids'][0][0])
+        price=np.append(price,orderbook['asks'][0][0])
         price=price[-200:]
-        price[-200]=orderbook['bids'][0][0]-3
-        price[-199]=orderbook['bids'][0][0]+3
+        price[-200]=orderbook['asks'][0][0]-3
+        price[-199]=orderbook['asks'][0][0]+3
         plt.clf()
         plt.plot(price)
         fig.canvas.draw()
